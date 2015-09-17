@@ -1,5 +1,5 @@
-## -*- docker-image-name: "armbuild/scw-app-zerobin:latest" -*-
-FROM armbuild/scw-app-lemp:latest
+## -*- docker-image-name: "scaleway/zerobin:latest" -*-
+FROM scaleway/lemp:latest
 MAINTAINER Scaleway <opensource@scaleway.com> (@scaleway)
 
 
