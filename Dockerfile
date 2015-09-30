@@ -9,3 +9,8 @@ RUN rm -rf /var/www \
  && wget -qO - https://github.com/sebsauvage/ZeroBin/archive/master.tar.gz | tar --strip=1 -C /var/www -xzf - \
  && chmod 777 /var/www/tmp /var/www/data
 
+ADD ./patches/etc/ /etc/
+
+# Configure NginX
+RUN ln -sf /etc/nginx/sites-available/zerobin /etc/nginx/sites-enabled/zerobin && \
+    rm -f /etc/nginx/sites-enabled/my_website
