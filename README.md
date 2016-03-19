@@ -1,35 +1,22 @@
-# Official Zerobin image on Scaleway
+# Zerobin image on Scaleway
 
-[![Travis](https://img.shields.io/travis/scaleway/image-app-zerobin.svg)](https://travis-ci.org/scaleway/image-app-zerobin)
+[![Build Status](https://travis-ci.org/scaleway-community/scaleway-zerobin.svg?branch=master)](https://travis-ci.org/scaleway-community/scaleway-zerobin)
 [![Scaleway ImageHub](https://img.shields.io/badge/ImageHub-view-ff69b4.svg)](https://hub.scaleway.com/zerobin.html)
-[![Run on Scaleway](https://img.shields.io/badge/Scaleway-run-69b4ff.svg)](https://cloud.scaleway.com/#/servers/new?image=coming-soon)
+[![Run on Scaleway](https://img.shields.io/badge/Scaleway-run-69b4ff.svg)](https://cloud.scaleway.com/#/servers/new?image=6c773ba7-b6ca-4b6a-bf59-22e801796556)
 
-Scripts to build the official Zerobin image on Scaleway
-
-This image is built using [Image Tools](https://github.com/scaleway/image-tools) and depends on the official [Ubuntu](https://github.com/scaleway/image-ubuntu) image.
+Launch your Zerobin app on Scaleway servers in minutes.
 
 ![](http://freedif.org/wp-content/uploads/2014/05/Zerobin-Logo.png)
 
-
 ---
 
-**This image is meant to be used on a C1 server.**
+## How to hack
+
+**This image is meant to be used on a Scaleway server.**
 
 We use the Docker's building system and convert it at the end to a disk image that will boot on real servers without Docker. Note that the image is still runnable as a Docker container for debug or for inheritance.
 
-[More info](https://github.com/scaleway/image-tools)
-
-
----
-
-## Install
-
-Build and write the image to /dev/nbd1 (see [documentation](https://www.scaleway.com/docs/create_an_image_with_docker))
-
-    $ make install
-
-Full list of commands available at: [scaleway/image-tools](https://github.com/scaleway/image-tools/#commands)
-
+[More info](https://github.com/scaleway/image-builder)
 
 ---
 
