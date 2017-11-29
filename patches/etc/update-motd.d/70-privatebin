@@ -4,8 +4,8 @@ PUBLIC_IP=$(oc-metadata --cached PUBLIC_IP_ADDRESS)
 
 cat <<EOF
 Hi Cloud Rider,
-Welcome to the ZeroBin image!
-ZeroBin is installed in /var/www.
+Welcome to the PrivateBin image!
+PrivateBin is installed in /srv/www/privatebin/.
 Access ZeroBin at http://${PUBLIC_IP}/.
 Enjoy!
 EOF

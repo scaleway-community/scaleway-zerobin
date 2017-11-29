@@ -1,16 +1,21 @@
-## -*- docker-image-name: "scaleway/zerobin:latest" -*-
-FROM scaleway/lemp:latest
+## -*- docker-image-name: "scaleway/privatebin:latest" -*-
+ARG ARCH
+FROM scaleway/ubuntu:${ARCH}-xenial
+
+
 MAINTAINER Scaleway <opensource@scaleway.com> (@scaleway)
 
 
-# Download ZeroBin
-RUN rm -rf /var/www \
- && mkdir -p /var/www/tmp /var/www/data \
- && wget -qO - https://github.com/sebsauvage/ZeroBin/archive/master.tar.gz | tar --strip=1 -C /var/www -xzf - \
- && chmod 777 /var/www/tmp /var/www/data
+RUN apt-get install -qy nginx php-fpm php-gd
 
+RUN mkdir -p /srv/www/privatebin/ \
+    && mkdir -p /srv/www/privatebin/ \
+    && chown www-data:www-data /srv/www/privatebin/ \
+    && REPO_URL='https://api.github.com/repos/PrivateBin/PrivateBin/releases/latest' \
+    && TARBALL_URL=$( wget -qO- ${REPO_URL}  | sed -n 's/"tarball_url"\:[[:blank:]]*"\(.*\)",/\1/p' ) \
+    && wget -qO- ${TARBALL_URL} | gunzip - | tar --strip=1 -C /srv/www/privatebin/ -x -f -
+
+# Configure Nginx
 ADD ./patches/etc/ /etc/
-
-# Configure NginX
-RUN ln -sf /etc/nginx/sites-available/zerobin /etc/nginx/sites-enabled/zerobin && \
-    rm -f /etc/nginx/sites-enabled/my_website
+RUN ln -sf /etc/nginx/sites-available/privatebin /etc/nginx/sites-enabled/privatebin \
+    && rm -f /etc/nginx/sites-enabled/default
