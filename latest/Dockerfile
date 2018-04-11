@@ -6,7 +6,7 @@ FROM scaleway/ubuntu:${SCW_ARCH}-xenial
 MAINTAINER Scaleway <opensource@scaleway.com> (@scaleway)
 
 
-RUN apt-get install -qy nginx php-fpm php-gd
+RUN apt-get update && apt-get -y upgrade && apt-get install -y nginx php-fpm php-gd
 
 RUN mkdir -p /srv/www/privatebin/ \
     && mkdir -p /srv/www/privatebin/data/ \
